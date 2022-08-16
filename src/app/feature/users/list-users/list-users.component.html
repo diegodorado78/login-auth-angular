@@ -3,4 +3,39 @@
   ids = user-list__filter, user-list__table, user-list__table-item-[index], user-list__table-item-[index]-avatar, user-list__table-item-[index]-first_name, user-list__table-item-[index]-email, user-list__table-item-[index]-btn-delete
   Remplazar [index] por el valor ejemplo "user-list__table-item-0"
 -->
+  <form class="form" action="">
+    <div class="form-field">
+        <input type="text" placeholder="Buscar usuario"  [(ngModel)]="filterUser"
+        name="filterUser">
+    </div>
+  </form>
 
+
+<div class="container" >
+ 
+  <table class="card">
+
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Last name</th>
+        <th>Email</th>
+        <th>Picture</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let user of users " >
+        <td> {{user.first_name }} </td>
+        <td> {{user.last_name}}</td>
+        <td > {{user.email}}</td>
+        <td > <img src="{{user.avatar}}" alt="user_image"></td>
+
+      </tr>
+    </tbody>
+    
+  </table>
+
+
+</div>
+ 

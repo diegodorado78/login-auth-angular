@@ -1,0 +1,24 @@
+.login__container{
+width: 80%;
+margin:5% auto
+}
+.login{
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    width: 100%;
+    text-align: center;
+    margin: 5px;
+    border-radius: 5px;
+    margin: 5% auto ;
+}
+@media (min-width:720px) {
+    .login__container{
+        width: 50%;
+        margin:5% auto
+        }
+        .login{
+            width: 60%;
+        }
+       
+}

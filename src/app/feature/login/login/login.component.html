@@ -2,3 +2,46 @@
   Recuerde conservar los id, no deben ser modificados
   ids = login__email, login__password, login__password-error, login__email-error, login__btn-login
 -->
+
+<div class="login__container">
+  <form class="login" method="post" [formGroup]="loginForm"  >
+    <h1>Login</h1>
+      <input
+      id="login__email"
+        type="email"
+        name="email"
+        placeholder="Email"
+        required="required"
+        formControlName="email"
+      />
+      <div id="login__email-error" *ngIf="loginForm.get('email').invalid && (loginForm.get('email').touched || loginForm.get('email').dirty)">
+        <span  *ngIf="loginForm.get('email').errors?.required">
+          Email is required.
+        </span>
+      </div>
+      
+      <input
+      id="login__password"
+        type="password"
+        name="password"
+        placeholder="Password"
+        formControlName="password"
+        required="required"
+
+      />
+      <div id="login__password-error" *ngIf="loginForm.get('password').invalid && (loginForm.get('password').touched || loginForm.get('password').dirty)"  >
+        <span *ngIf="loginForm.get('password').errors?.required">
+          Password is required.
+        </span>
+        <span  *ngIf="loginForm.get('password').errors?.minLength">
+          The minimun of characters will be 8
+        </span>
+      </div>
+      
+   
+    <button 
+    id="login__btn-login"
+    [disabled]="loginForm.invalid"
+    type="submit" >Log in</button>
+  </form>
+</div>
