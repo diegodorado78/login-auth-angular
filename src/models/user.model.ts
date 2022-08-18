@@ -3,7 +3,7 @@ export interface Credentials {
     password: string;
   }
   export interface Login {
-    access_token: string;
+    token: string;
   }
 export interface User{
     id:string;

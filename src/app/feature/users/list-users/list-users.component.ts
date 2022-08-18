@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { ListService } from '@core/services/list.service';
 import { User } from 'src/models/user.model';
-import { FilterPipePipe } from '@shared/pipes/filter-pipe.pipe';
 @Component({
   selector: 'list-users',
   templateUrl: './list-users.component.html',

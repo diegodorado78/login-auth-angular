@@ -2,3 +2,39 @@
   Recuerde conservar los id, no deben ser modificados
   ids = user-create__name, user-create__name-error, user-create__job, user-create__job-error, user-create__btn-create
 -->
+<div class="form__container">
+  <form class="form" method="post" [formGroup]="createForm"  >
+    <h1>Create user</h1>
+      <input
+      id="user-create__name"
+        type="text"
+        name="email"
+        placeholder="Name"
+        formControlName="userName"
+      />
+      <div id="user-create__name-error" *ngIf="createForm.get('userName').invalid && (createForm.get('userName').touched || createForm.get('userName').dirty)">
+        <span  *ngIf="createForm.get('userName').errors?.required">
+          Name is required.
+        </span>
+      </div>
+      
+      <input
+      id="user-create__job"
+        type="text"
+        name="job"
+        placeholder="job"
+        formControlName="userJob"
+      />
+      <div id="user-create__job-error" *ngIf="createForm.get('userJob').invalid && (createForm.get('userJob').touched || createForm.get('userJob').dirty)"  >
+        <span *ngIf="createForm.get('userJob').errors?.required">
+          Job is required.
+        </span>
+       
+      </div>
+      
+    <button 
+    id="user-create__btn-create"
+    [disabled]="createForm.invalid"
+    type="submit" >Create</button>
+  </form>
+</div>

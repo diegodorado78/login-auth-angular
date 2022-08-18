@@ -1,23 +1,61 @@
 /* You can add global styles to this file, and also import other style files */
 @import "node_modules/h8k-design/lib/index.scss";
 body{
-    width: 100%;
+    width: 90%;
     height: 100%;
 }
 :root {
     display: flex;
     flex-direction: column;
+    width: 90%;
     border-radius: 5px;
-    width: auto;
     margin:  1% auto;
     align-items: center;
     justify-items: center;
     box-shadow: 5px 5px 20px 2px #ccc;
     box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
 }
 
 .container{
- width:100%;
- border: 1px solid red;
  text-align: center;
+ align-content: center;
     }
+
+    .form__container{
+        width: 80%;
+        margin:5% auto
+        }
+        .form{
+            display: flex;
+            flex-direction: column;
+            min-width: 300px;
+            width: 50%;
+            text-align: center;
+            margin: 5px;
+            border-radius: 5px;
+            margin: 5% auto ;
+        }
+        @media (min-width:720px) {
+           
+               
+        }
+@media (max-width:720px) {
+    body{
+        width: 100%;
+    }
+:root{
+    width: 100%;
+    padding: 0;
+    flex-wrap: wrap;
+}
+.form__container{
+    width: 100%;
+    margin:5% auto
+    }
+    .form{
+        width: 60%;
+    }
+    
+}

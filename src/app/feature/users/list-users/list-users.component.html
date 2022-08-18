@@ -1,35 +1,39 @@
 <!--
   Recuerde conservar los id, no deben ser modificados
-  ids = user-list__filter, user-list__table, user-list__table-item-[index], user-list__table-item-[index]-avatar, user-list__table-item-[index]-first_name, user-list__table-item-[index]-email, user-list__table-item-[index]-btn-delete
+  ids =  , , , , 
   Remplazar [index] por el valor ejemplo "user-list__table-item-0"
 -->
   <form class="form" action="">
     <div class="form-field">
-        <input type="text" placeholder="Buscar usuario"  [(ngModel)]="filterUser"
+        <input id="user-list__filter" type="text" placeholder="Buscar usuario"  [(ngModel)]="filterUser"
         name="filterUser">
     </div>
   </form>
 
 
-<div class="container" >
+<div  >
  
-  <table class="card">
+  <table class="card " id="user-list__table">
 
     <thead>
       <tr>
-        <th>Name</th>
+        <th >Id</th>
+        <th >Name</th>
         <th>Last name</th>
         <th>Email</th>
         <th>Picture</th>
+        <th>Action</th>
 
       </tr>
-    </thead>
-    <tbody>
+    </thead >
+    <tbody >
       <tr  *ngFor="let user of users " >
-        <td> {{user.first_name }} </td>
+        <td id="user-list__table-item-{{user.id}}"> {{user.id }} </td>
+        <td id="user-list__table-item-{{user.id}}-first_name"> {{user.first_name }} </td>
         <td> {{user.last_name}}</td>
-        <td > {{user.email}}</td>
-        <td > <img src="{{user.avatar}}" alt="user_image"></td>
+        <td id="user-list__table-item-{{user.id}}-email" > {{user.email}}</td>
+        <td  id="user-list__table-item-{{user.id}}-avatar"> <img src="{{user.avatar}}" alt="user_image"></td>
+        <button id="user-list__table-item-{{user.id}}-btn-delete"> delete</button>
 
       </tr>
     </tbody>

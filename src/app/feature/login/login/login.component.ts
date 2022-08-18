@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../shared/services/login/login.service';
+import { Credentials } from 'src/models/user.model';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import { LoginService } from '../shared/services/login/login.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit{
-  loginForm:FormGroup
+ loginForm:FormGroup
  email:string;
  password:string;
   constructor(
@@ -20,30 +21,29 @@ export class LoginComponent implements OnInit{
     this.buildForm();
   }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    // throw new Error('Method not implemented.');
   }
   private buildForm() {
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      email: ['eve.holt@reqres.in', [Validators.required]],
+      password: ['cityslicka', [Validators.required, Validators.minLength(8)]],
     });
   }
-  login(event: Event) {
-    event.preventDefault();
+  login() {
     if (this.loginForm.valid){//si el loginForm es valido, guarda los datos ingresados y llama al servicio
-      const value = {
-        email:this.loginForm.value.email,
-        password:this.loginForm.value.password
-      };
-      this.loginService.login(value)
-      // .then(()=>{
-      return this.redirectUsers();
-      // })
-      // .catch(()=>{
-      //   alert('error en las credenciales')
-      // })
+     const{email,password}=this.loginForm.value //desestructuro los valores del form
+
+      const credentials:Credentials={ //creo un objeto tipado para poner los valores del form
+        email:email,
+        password:password
+      }      
+      this.loginService.login(credentials)
+      .subscribe(res =>{
+        localStorage.setItem('token',res.token)
+        console.log(localStorage.token);//como respuesta obtengo el token
+      })
+      this.redirectUsers();
     }
-    console.log(this.loginForm.value);
   }
 
 
@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit{
    * Este método no se puede modificar
    * */
   public redirectUsers(): void {
-    this.router.navigateByUrl('/users/list');
+    this.router.navigateByUrl('');
   }
 
 }
